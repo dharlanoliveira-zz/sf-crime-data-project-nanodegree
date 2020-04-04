@@ -1,0 +1,5 @@
+pyspark
+python-dateutil
+pathlib
+kafka-python
+zipfile37
