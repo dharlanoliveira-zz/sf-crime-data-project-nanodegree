@@ -84,7 +84,7 @@ if __name__ == "__main__":
         .config(conf=sparkConf) \
         .getOrCreate()
 
-    spark.sparkContext.setLogLevel("INFO")
+    spark.sparkContext.setLogLevel("WARN")
 
     logger.info("Spark started")
 
