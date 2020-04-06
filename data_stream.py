@@ -36,10 +36,8 @@ def run_spark_job(spark):
         .option("startingOffsets", "earliest") \
         .load()
 
-    # # Show schema for the incoming resources for checks
     df.printSchema()
 
-    # Take only value and convert it to String
     kafka_df = df.selectExpr("CAST(value AS STRING)")
 
     service_table = kafka_df \
@@ -65,13 +63,13 @@ def run_spark_job(spark):
 
     join_query = agg_df.join(radio_code_df, "disposition")
 
-    query2 = join_query \
+    query = join_query \
         .writeStream \
         .outputMode("complete") \
         .format("console") \
         .start()
 
-    query2.awaitTermination()
+    query.awaitTermination()
 
 
 if __name__ == "__main__":
@@ -81,7 +79,6 @@ if __name__ == "__main__":
         .setAppName("KafkaSparkStructuredStreaming") \
         .setMaster("spark://my-desktop:7077")
 
-    # TODO Create Spark in Standalone mode
     spark = SparkSession \
         .builder \
         .config(conf=sparkConf) \
