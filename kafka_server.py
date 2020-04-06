@@ -8,7 +8,7 @@ def run_kafka_server():
     producer = producer_server.ProducerServer(
         zip_file=zip_file,
         input_file=input_file,
-        topic="udacity.nanodegree.sf.crime-data",
+        topic="udacity.sf-crime-data",
         bootstrap_servers=" localhost:9092 ",
         client_id="sf-crime-producer"
     )
