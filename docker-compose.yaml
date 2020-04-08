@@ -66,8 +66,11 @@ services:
       - "7077:7077"
     volumes:
       - ./radio_code.json:/dados/projetos/streams/sf-crime-data-project-nanodegree/radio_code.json
+      - ./master.sh:/master.sh
     environment:
       - INIT_DAEMON_STEP=setup_spark
+      - SPARK_MASTER_HOST=localhost
+      - SPARK_LOCAL_IP=127.0.0.1
       - "constraint:node==master1"
 
   spark-worker-1:
@@ -81,5 +84,5 @@ services:
     volumes:
       - ./radio_code.json:/dados/projetos/streams/sf-crime-data-project-nanodegree/radio_code.json
     environment:
-      - "SPARK_MASTER=spark://my-desktop:7077"
+      - "SPARK_MASTER=spark://localhost:7077"
       - "constraint:node==worker1"

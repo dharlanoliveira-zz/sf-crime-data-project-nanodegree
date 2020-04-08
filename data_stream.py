@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     sparkConf = SparkConf() \
         .setAppName("KafkaSparkStructuredStreaming") \
-        .setMaster("spark://my-desktop:7077")
+        .setMaster("spark://localhost:7077")
 
     spark = SparkSession \
         .builder \
