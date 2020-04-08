@@ -9,7 +9,7 @@ hability that I gain. I used spark 2.4.5 and the kafka 5.2.2, the same of the fi
 ##### Dificulties ?
 
 I found some parts of the project very confusing and dificult to understand, sometimes I caught myself struggling
-with the understanting of what you want from me, instead of the technical aspects of solution. Until now I dont 
+to understand what you want from me beyond of the technical aspects of solution. Until now I dont 
 understand what you really whant with the TODO "count the number of original crime type". I assumed something and
 have gone ahead. I disregarded agrouping the information in a window, because the exercise didn't request.
 
@@ -29,9 +29,9 @@ have gone ahead. I disregarded agrouping the information in a window, because th
 
 I read the documentation to discover all possible parameters to configure my spark session. While I was reading I tried
 to identify what parameters can affect troughput and the latency. The options that could have more impact on this 
-properties, and it's a hunch, are listed bellow. I included the docs summing up the property effect no the session. 
+properties, and it's a hunch, are listed bellow. I included the summing up of the property effect on the sparksession. 
 In our example I really don't believe that these parameters gonna make much difference, because we are running locally 
-with a small dataset being produced once per second.
+with a small dataset being produced just once per second.
 
 *https://spark.apache.org/docs/latest/configuration.html*
 
@@ -49,14 +49,11 @@ Maximum rate (number of records per second) at which data will be read from each
 
 ###### What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
 
-As I imagened it's very dificultie to observe a lot of difference because the low load over spark. However simulating a lot of changes 
-among the parameters upside, It was possible to observe a difference in "processedRowsPerSecond", even in this simulation scenario.
+As I imagened it's very dificultie to observe a lot of difference because of the low load over spark. However simulating a lot of changes among the parameters upside, It was possible to observe a difference in "processedRowsPerSecond", even in this simulation scenario.
 
-The biggest variation in "processedRowsPerSecond" was observed when I increased the config spark.default.parallelism, the number
-that I defined in the end of tests was **36**, 3 times more than the number of cores in my machine.
+The biggest variation in "processedRowsPerSecond" was observed when I increased the config spark.default.parallelism, the number that I defined in the end of tests was **36**, 3 times more than the number of cores in my machine.
 
-It's obvious that the number of cores influence in throughput. By default, in local mode, spark uses all cores in machine, but 
-decreasing the value as well descrease the "processedRowsPerSecond".
+It's obvious that the number of cores influence in throughput. By default, in local mode, spark uses all cores in machine, but decreasing the value as well descrease the "processedRowsPerSecond".
 
 When i figured out in docs the parameter "spark.streaming.backpressure.enabled", I thought that this parameter would made
 a lot of difference. In our example, I can't observe this. However I still thinking that this parameter should be
