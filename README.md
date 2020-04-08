@@ -15,11 +15,11 @@ have gone ahead. I disregarded agrouping the information in a window, because th
 
 ##### Screenshots
 
-######Take a screenshot of your progress reporter after executing a Spark job
+###### Take a screenshot of your progress reporter after executing a Spark job
 
 [progress_reporter.png](./progress_reporter.png)
 
-######Take a screenshot of the Spark Streaming UI as the streaming continues
+###### Take a screenshot of the Spark Streaming UI as the streaming continues
 
 [spark_streaming_ui.png](./spark_streaming_ui.png) 
 
